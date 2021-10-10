@@ -1,0 +1,26 @@
+
+var longestCommonPrefix = function(strs) {
+    let minLen = Number.POSITIVE_INFINITY;
+    let minPos = 0;
+    let isQualified = true;
+    let ch = "";
+    for(let i=0;i<strs.length;i++){
+        if(minLen > strs[i].length){
+           minPos = i;
+           minLen = strs[i].length;
+        }
+    }
+    let j = 0; 
+    while(j<minLen){
+          for(let i=0;i<strs.length;i++){
+              if(strs[i][j]!==strs[minPos][j]){
+                isQualified = false;   
+              }
+          }
+          if(isQualified){
+              ch = ch + strs[minPos][j]
+          }
+        j++;
+    }
+    return ch;
+};
